@@ -1,13 +1,8 @@
 import pickle 
-# import numpy as np
 import streamlit as st
 
 model = pickle.load(open('hypertension.sav', 'rb'))
 
-# st.set_page_config(
-#     page_title="Prediksi tekanan darah tinggi",
-#     page_icon="👨🏼‍🔬",
-# )
 st.set_page_config(
     page_title="Prediksi tekanan darah tinggi",
     page_icon="🩸",
@@ -17,14 +12,13 @@ st.markdown(
     """
         # Prediksi tekanan darah tinggi
         Untuk melakukan prediksi website ini membutuhkan **12 inputan** dengan ketentuan berdasarkan dataset sehingga menghasilkan prediksi yang lebih akurat.
-        Kategorikal dikonversikan menjadi angka dari 0 - N
     """
 )
 # Kategorikal data
 sex_data = {0: "Perempuan", 1: "Laki-laki"}
 cp_data = {0:"Tidak sakit", 1: "Angina tipikal", 2: "Angina atipikal", 3: "Non-anginal"}
 yes_no_data = {0: "Tidak", 1: "Ya"}
-restecg_data = {0:"Normal", 1: "ST > 0,05 mV", 2: "Kemungkinan atau pasti Hipertrofi ventrikel"}
+restecg_data = {0:"Normal", 1: "ST-T Abnormal", 2: "Left ventricular"}
 slope_data = {0:"Menaik", 1:"Datar", 2:"Menurun"}
 
 
@@ -59,8 +53,6 @@ slope = st.selectbox("Slope dari segmen ST yang terjadi selama tes olahraga", op
 ca = st.number_input("Jumlah pembuluh darah selama prosedur flouroskopi (min=0, max=4)", min_value=0, max_value=4)
 
 
-# st.write(sex)
-# diagnosis = ''
 if st.button("Prediksi penyakit darah tinggi"):
     hypertension_prediction = model.predict([[age,sex,cp,tresbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca]])
     if(hypertension_prediction[0]==0):
