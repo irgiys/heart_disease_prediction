@@ -1,25 +1,26 @@
 import pickle 
 import streamlit as st
 
-model = pickle.load(open('hypertension.sav', 'rb'))
+model = pickle.load(open('heart_disease.sav', 'rb'))
 
 st.set_page_config(
-    page_title="Prediksi tekanan darah tinggi",
-    page_icon="🩸",
+    page_title="Prediksi Sakit Jantung",
+    page_icon="🫀",
 )
 
 st.markdown(
     """
-        # Prediksi tekanan darah tinggi
-        Untuk melakukan prediksi website ini membutuhkan **12 inputan** dengan ketentuan berdasarkan dataset sehingga menghasilkan prediksi yang lebih akurat.
+        # 👨‍⚕️ Prediksi Sakit Jantung
+        Untuk melakukan prediksi website ini membutuhkan **13 inputan** dengan ketentuan tertentu sehingga menghasilkan prediksi yang lebih akurat.
     """
 )
 # Kategorikal data
 sex_data = {0: "Perempuan", 1: "Laki-laki"}
-cp_data = {0:"Tidak sakit", 1: "Angina tipikal", 2: "Angina atipikal", 3: "Non-anginal"}
+cp_data = {0:"Asymptotic", 1: "Typical angina", 2: "Atypical angina", 3: "Non-anginal"}
 yes_no_data = {0: "Tidak", 1: "Ya"}
 restecg_data = {0:"Normal", 1: "ST-T Abnormal", 2: "Left ventricular"}
-slope_data = {0:"Menaik", 1:"Datar", 2:"Menurun"}
+slope_data = {0:"Upsloping", 1:"Flat", 2:"Downsloping"}
+thal_data = {1:"Normal", 2:"Fixed defect", 3:"Reversable"}
 
 
 col1, col2 = st.columns(2)
@@ -51,12 +52,13 @@ with col2:
 
 slope = st.selectbox("Slope dari segmen ST yang terjadi selama tes olahraga", options=list(slope_data.keys()), format_func=lambda x:slope_data[x])
 ca = st.number_input("Jumlah pembuluh darah selama prosedur flouroskopi (min=0, max=4)", min_value=0, max_value=4)
+thal = st.selectbox("Thalamesia", options=list(thal_data.keys()), format_func=lambda x:thal_data[x])
 
 
-if st.button("Prediksi penyakit darah tinggi"):
-    hypertension_prediction = model.predict([[age,sex,cp,tresbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca]])
-    if(hypertension_prediction[0]==0):
-        st.success("Pasien tidak terkena darah tinggi",icon="✅")
+if st.button("Prediksi penyakit sakit jantung"):
+    heart_disease_predict = model.predict([[age,sex,cp,tresbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
+    if(heart_disease_predict[0]==0):
+        st.success("Pasien tidak terkena sakit jantung",icon="✅")
     else :
-        st.warning("Pasien terkena darah tinggi", icon="⚠️")
+        st.warning("Pasien terkena sakit jantung", icon="⚠️")
         
