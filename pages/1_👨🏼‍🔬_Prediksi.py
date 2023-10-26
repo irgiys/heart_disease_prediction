@@ -50,7 +50,7 @@ with col1:
 with col2:
     oldpeak = st.number_input("Depresi ST disebabkan oleh olahraga (min=0, max=6.2)", min_value=0.0, max_value=6.2)
 
-slope = st.selectbox("Slope dari segmen ST yang terjadi selama tes olahraga", options=list(slope_data.keys()), format_func=lambda x:slope_data[x])
+slope = st.selectbox("Slope dari segmen ST yang terjadi selama puncak olahraga", options=list(slope_data.keys()), format_func=lambda x:slope_data[x])
 ca = st.number_input("Jumlah pembuluh darah selama prosedur flouroskopi (min=0, max=4)", min_value=0, max_value=4)
 thal = st.selectbox("Thalamesia", options=list(thal_data.keys()), format_func=lambda x:thal_data[x])
 
