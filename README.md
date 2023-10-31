@@ -51,6 +51,7 @@ Dataset "Diabetes, Hypertension and Stroke Prediction" adalah data yang saya dap
 -   **slope** : Slope dari segmen ST yang terjadi selama puncak olahraga [0: Upsloping, 1: Flat, 2: Downsloping] _`int64`_
 -   **ca** : Jumlah pembuluh darah selama prosedur flouroskopi _`int64`_
 -   **thal** : Thalamesia [1: Normal , 2: Fixed defect , 3: Reversable"] _`int64`_
+-   **target** : Apakah pasien terkena heart disease [0: Tidak , 1: Ya defect , 3: Reversable"] _`int64`_
 
 ## Data Prepartaion
 
