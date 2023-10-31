@@ -178,6 +178,7 @@ Dapat dilihat pada heatmap diatas **cp**, **restecg**, **thalach**, **slope** me
 ## Visualisasi
 
 Selanjutnya saya melihat visualisasi data yang terkena heart disease dan tidak dari beberapa faktor.
+
 Yang pertama jenis sakit dada dengan heart disease
 
 ```python
@@ -186,6 +187,14 @@ plt.show()
 ```
 
 ![](cp.png)
+Selanjutnya exang (angina akibat olahraga)
+
+```python
+sns.countplot(x="exang", data=temp_df,hue="target")
+plt.show()
+```
+
+![](exang.png)
 
 ## Modeling
 
