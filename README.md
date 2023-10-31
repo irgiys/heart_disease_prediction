@@ -196,6 +196,17 @@ plt.show()
 
 ![](exang.png)
 
+Selanjutnya restecg (Elektrokardiografi (EKG) istirahat)
+
+![](restecg.png)
+
+Selanjutnya slope (Slope dari segmen ST yang terjadi selama puncak olahraga)
+
+![](slope.png)
+
+dan Terakhir thal (Thalamesia)
+![](thal.png)
+
 ## Modeling
 
 Pada tahap ini saya akan membuat feature dari semua kolom kecuali kolom `target` yang dimana akan dijadikan sebagai label dengan perintah berikut :
