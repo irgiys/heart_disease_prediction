@@ -12,7 +12,7 @@ Proyek ini bertujuan untuk membangun model prediksi penyakit jantung. Model ini 
 
 ## Business Understanding
 
-Membantu tenaga medis dalam mendiagnosis penyakit jantung secara lebih akurat dan efisien.
+Membantu tenaga medis dalam mendiagnosis penyakit jantung dengan menggunakan beberapa variabel-variabel.
 
 ### Problem Statement
 
@@ -174,6 +174,18 @@ sns.heatmap(df.corr(), annot=True)
 
 ![](corr.png)
 Dapat dilihat pada heatmap diatas **cp**, **restecg**, **thalach**, **slope** memiliki korelisi yang lebih tinggi dengan target dibandingkan dengan kolom lain.
+
+## Visualisasi
+
+Selanjutnya saya melihat visualisasi data yang terkena heart disease dan tidak dari beberapa faktor.
+Yang pertama jenis sakit dada dengan heart disease
+
+```python
+sns.countplot(x="cp", data=temp_df,hue="target")
+plt.show()
+```
+
+![](cp.png)
 
 ## Modeling
 
